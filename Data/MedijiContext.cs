@@ -1,5 +1,6 @@
 ﻿using MedijiZavrsniRad.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedijiZavrsniRad.Data
 {
@@ -14,5 +15,6 @@ namespace MedijiZavrsniRad.Data
 
         public DbSet<Medij> Mediji { get; set; }
         public DbSet<Korisnik> Korisnici { get; set; }
+        public DbSet<Komentar> Komentari { get; set; }
     }
 }
