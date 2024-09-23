@@ -6,11 +6,9 @@ namespace MedijiZavrsniRad.Models
     {
         public string? Opis { get; set; }
 
-        [ForeignKey("Medij")]
-        [Column("medij")]
+        [ForeignKey("medij")]
         public Medij? Medij{ get; set; }
-        [ForeignKey("Korisnik")]
-        [Column("korisnik")]
+        [ForeignKey("korisnik")]
         public Korisnik? Korisnik { get; set; }
     }
 }
