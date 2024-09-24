@@ -19,15 +19,15 @@ builder.Services.AddDbContext<MedijiContext>(opcije =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI(o =>
     {
         o.ConfigObject.AdditionalItems.Add("RequestSnippetsEnabled", true);
         o.EnableTryItOutByDefault();
     });
-}
+//}
 
 app.UseHttpsRedirection();
 
