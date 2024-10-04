@@ -7,8 +7,8 @@ namespace MedijiZavrsniRad.Models
         public string? Opis { get; set; }
 
         [ForeignKey("medij")]
-        public Medij? Medij{ get; set; }
+        public Medij? Mediji{ get; set; }
         [ForeignKey("korisnik")]
-        public Korisnik? Korisnik { get; set; }
+        public Korisnik? Korisnici { get; set; }
     }
 }
