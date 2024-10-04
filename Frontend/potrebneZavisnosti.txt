@@ -1,10 +1,20 @@
 u terminalu direktorija izvesti
 
 
-<td className="desno"> ---pogledaj app.css za cijeli broj
+<td className={smjer.trajanje==null? 'sredina' ? "desno"}> ---pogledaj app.css za cijeli broj
 
-<td className="desno">
-{smjer.trajanje==null ? 'nije definirano' : smjer.trajanje}
+<td className={smjer.cijena==null? 'sredina' ? "desno"}>
+{smjer.cijena==null ? 'nije definirano' : 
+<NumericFormat
+value={smjer.cijena}
+displayType={'text'}
+thousandSeparator='.'
+decimalSeparator=','
+prefix='€'
+decimalScale={2}
+fixedDecimalScale={2}
+
+}
 
 
 
