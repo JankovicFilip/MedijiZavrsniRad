@@ -5,6 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './App.css'
 import NavBarMediji from './components/navBarMediji';
+import { Route, Routes } from 'react-router-dom';
+import { RouteNames } from './constants';
+import Pocetna from './pages/Pocetna';
+import MedijiPregled from './pages/mediji/MedijiPregled';
 
 function App() {
 
@@ -12,8 +16,15 @@ function App() {
     <>
     <Container>
       <NavBarMediji/>
+      <Routes>
+        <Route path={RouteNames.HOME} element={<Pocetna/>}/>
+
+        <Route path={RouteNames.MEDIJ_PREGLED} element={<MedijiPregled/>}/>
+      </Routes>
+
+      <hr/>
+      &copy; Mediji
     
-    aaaa
     </Container>
     </>
   )
