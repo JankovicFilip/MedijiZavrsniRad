@@ -45,8 +45,8 @@ namespace MedijiZavrsniRad.Controllers
             var smjerBaza = _context.Komentari.Find(sifra);
 
             // za sada rucno, kasnije mapper
-            smjerBaza.Korisnici = komentar.Korisnici;
-            smjerBaza.Mediji = komentar.Mediji;
+            smjerBaza.Korisnik = komentar.Korisnik;
+            smjerBaza.Medij = komentar.Medij;
             smjerBaza.Opis = komentar.Opis;
 
             _context.Komentari.Update(smjerBaza);
