@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MedijiZavrsniRad.Models
 {
@@ -9,11 +10,13 @@ namespace MedijiZavrsniRad.Models
         public int? Medij { get; set; }
 
         [ForeignKey("Medij")]
+        //[JsonIgnore]
         public Medij? Mediji { get; set; }
 
         //[ForeignKey("Korisnik")]
         public int? Korisnik { get; set; }
         [ForeignKey("Korisnik")]
+        //[JsonIgnore]
         public Korisnik? Korisnici { get; set; }
     }
 }

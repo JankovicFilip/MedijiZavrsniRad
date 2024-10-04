@@ -28,31 +28,45 @@ namespace MedijiZavrsniRad.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Komentar komentar)
+        public IActionResult Post(KomentarDTO komentarDto)
         {
+
+            var komentar = new Komentar
+            {
+                Opis = komentarDto.Opis,
+                Medij = komentarDto.Medij,
+                Korisnik = komentarDto.Korisnik
+            };
+
+
             _context.Komentari.Add(komentar);
             _context.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created, komentar);
+            return StatusCode(StatusCodes.Status201Created, komentarDto);
 
         }
 
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
-        public IActionResult Put(int sifra, Komentar komentar)
+        public IActionResult Put(int sifra, KomentarDTO komentarDto)
         {
 
-            var smjerBaza = _context.Komentari.Find(sifra);
+            var komentarBaza = _context.Komentari.Find(sifra);
+            if (komentarBaza == null)
+            {
+                return NotFound(new { poruka = "Komentar nije pronađen" });
+            }
 
-            // za sada rucno, kasnije mapper
-            smjerBaza.Korisnik = komentar.Korisnik;
-            smjerBaza.Medij = komentar.Medij;
-            smjerBaza.Opis = komentar.Opis;
+            // Manually map the properties from DTO to the entity
+            komentarBaza.Korisnik = komentarDto.Korisnik;
+            komentarBaza.Medij = komentarDto.Medij;
+            komentarBaza.Opis = komentarDto.Opis;
+            
 
-            _context.Komentari.Update(smjerBaza);
+            _context.Komentari.Update(komentarBaza);
             _context.SaveChanges();
 
-            return Ok(new { poruka = "Uspjesno promijenjeno" });
+            return Ok(new { poruka = "Uspješno promijenjeno" });
 
 
         }
