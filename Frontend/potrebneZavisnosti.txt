@@ -1,5 +1,14 @@
 u terminalu direktorija izvesti
 
+
+<td className="desno"> ---pogledaj app.css za cijeli broj
+
+<td className="desno">
+{smjer.trajanje==null ? 'nije definirano' : smjer.trajanje}
+
+
+
 npm install react-bootstrap bootstrap       
 npm install react-router-dom
 npm install axios
+npm install react-number-format
