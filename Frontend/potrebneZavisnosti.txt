@@ -1,0 +1,3 @@
+u terminalu direktorija izvesti
+
+npm install react-bootstrap bootstrap       
