@@ -16,7 +16,22 @@ builder.Services.AddDbContext<MedijiContext>(opcije =>
     opcije.UseSqlServer(builder.Configuration.GetConnectionString("MedijiContext"));
 });
 
+
+
+
 builder.Services.AddCors(opcije =>
+{
+    opcije.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+
+    });
+
+});
+
+/*builder.Services.AddCors(opcije =>
 {
     opcije.AddPolicy("CorsPolicy",
         builder =>
@@ -24,6 +39,8 @@ builder.Services.AddCors(opcije =>
 
         );
 });
+ */
+
 
 var app = builder.Build();
 
@@ -44,6 +61,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors("CorsPolicy");
+app.UseCors();
 
 app.Run();

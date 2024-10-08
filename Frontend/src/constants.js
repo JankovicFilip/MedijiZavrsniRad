@@ -11,4 +11,4 @@ export const RouteNames = {
     KOMENTAR_PREGLED: '/komentari'
 }
 
-export const BACKEND_URL = 'http://hannabi333-001-site1.atempurl.com/api/v1'
+export const BACKEND_URL = 'https://hannabi333-001-site1.atempurl.com/api/v1'
