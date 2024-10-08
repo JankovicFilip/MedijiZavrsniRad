@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import { RouteNames } from './constants';
 import Pocetna from './pages/Pocetna';
 import MedijiPregled from './pages/mediji/MedijiPregled';
+import MedijiDodaj from './pages/mediji/MedijiDodaj';
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
         <Route path={RouteNames.HOME} element={<Pocetna/>}/>
 
         <Route path={RouteNames.MEDIJ_PREGLED} element={<MedijiPregled/>}/>
+        <Route path={RouteNames.MEDIJ_NOVI} element={<MedijiDodaj/>}/>
+
       </Routes>
 
       <hr/>

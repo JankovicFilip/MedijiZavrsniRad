@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import MedijiService from "../../services/MedijService"
 import { Button, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { RouteNames } from "../../constants";
 
 
 export default function MedijiPregled() {
@@ -37,12 +39,16 @@ export default function MedijiPregled() {
             alert(odgovor.poruka)
             return
         }
+
         dohvatiMedije();
     }
 
 
     return (
         <>
+            <Link to={RouteNames.MEDIJ_NOVI}
+            className="btn btn-success siroko">Dodaj novi medij</Link>
+
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
