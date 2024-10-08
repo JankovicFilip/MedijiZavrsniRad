@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import MedijiService from "../../services/MedijService"
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 
 export default function MedijiPregled() {
@@ -21,6 +21,24 @@ export default function MedijiPregled() {
     useEffect(()=>{
         dohvatiMedije();
     },[])
+
+    function obrisi(sifra){
+        if(!confirm('Sigurno obrisati?')){
+            return
+        }
+        brisanjeMedija(sifra);
+    }
+
+    async function brisanjeMedija(sifra){
+        
+        const odgovor = await MedijiService.brisanje(sifra);
+
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return
+        }
+        dohvatiMedije();
+    }
 
 
     return (
@@ -50,7 +68,14 @@ export default function MedijiPregled() {
                             <td>
                                 {medij.genre}
                             </td>
-                            <td>akcija</td>
+                            <td>
+                                <Button
+                                variant="danger"
+                                onClick={()=>obrisi(medij.sifra)}
+                                >
+                                    Obriši
+                                </Button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
