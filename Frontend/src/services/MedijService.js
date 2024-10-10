@@ -26,8 +26,20 @@ async function brisanje(sifra){
     })
 }
 
-async function dodaj(smjer){
-    return await HttpService.post('/Medij',smjer)
+async function dodaj(medij){
+    return await HttpService.post('/Medij/' + sifra,medij)
+    .then((odgovor)=>{
+        //console.log(odgovor.data)
+        return{greska: false, poruka: 'Dodano!'}
+    })
+    .catch((e)=>{
+        //console.log(e)
+        return {greska: true, poruka: "Problem kod dodavanja medija!"}
+    })
+}
+
+async function promjena(sifra,medij){
+    return await HttpService.put('/Medij/' + sifra,medij)
     .then((odgovor)=>{
         //console.log(odgovor.data)
         return{greska: false, poruka: 'Dodano!'}
@@ -52,5 +64,6 @@ export default {
     get,
     brisanje,
     dodaj,
-    getBySifra
+    getBySifra,
+    promjena
 }

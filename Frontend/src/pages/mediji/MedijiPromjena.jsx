@@ -29,9 +29,27 @@ export default function MedijiPromjena() {
         dohvatiMedij();
     },[])
 
+    async function promjena(medij){
+        //console.log(medij)
+        //console.log(JSON.stringify(medij))
+        const odgovor = await MedijiService.promjena(routeParams.sifra,medij)
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return;
+        }
+        navigate(RouteNames.MEDIJ_PREGLED)
+    }
+
 
     function obradiSubmit(e){ // e je event
         e.preventDefault(); // nemoj odraditi zahtjev na server
+        let podaci = new FormData(e.target)
+        promjena({
+            naziv: podaci.get('naziv'),
+            opis: podaci.get('opis'),
+            vrsta: podaci.get('vrsta'),
+            genre: podaci.get('genre')
+        })
     }
 
 

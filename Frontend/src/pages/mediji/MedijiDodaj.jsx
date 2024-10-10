@@ -36,7 +36,7 @@ export default function MedijiDodaj() {
 
     return (
         <>
-            Dodavanje Smjera
+            Dodavanje medija
             <Form onSubmit={obradiSubmit}>
             
                 <Form.Group controlId="naziv">
