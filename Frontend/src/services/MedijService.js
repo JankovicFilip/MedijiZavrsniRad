@@ -26,7 +26,21 @@ async function brisanje(sifra){
     })
 }
 
+async function dodaj(smjer){
+    return await HttpService.post('/Medij',smjer)
+    .then((odgovor)=>{
+        //console.log(odgovor.data)
+        return{greska: false, poruka: 'Dodano!'}
+    })
+    .catch((e)=>{
+        //console.log(e)
+        return {greska: true, poruka: "Problem kod dodavanja medija!"}
+    })
+}
+
+
 export default {
     get,
-    brisanje
+    brisanje,
+    dodaj
 }

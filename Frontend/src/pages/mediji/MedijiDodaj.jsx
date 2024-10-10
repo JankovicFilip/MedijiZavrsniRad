@@ -8,8 +8,29 @@ import { RouteNames } from "../../constants";
 export default function MedijiDodaj() {
 
     const navigate = useNavigate();
+
+    async function dodaj(medij){
+        //console.log(medij)
+        //console.log(JSON.stringify(medij))
+        const odgovor = await MedijiService.dodaj(medij)
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return;
+        }
+        navigate(RouteNames.MEDIJ_PREGLED)
+    }
+
+
     function obradiSubmit(e){ // e je event
         e.preventDefault(); // nemoj odraditi zahtjev na server
+        let podaci = new FormData(e.target)
+        dodaj({
+            naziv: podaci.get('naziv'),
+            opis: podaci.get('opis'),
+            vrsta: podaci.get('vrsta'),
+            genre: podaci.get('genre')
+        })
+
     }
 
 
