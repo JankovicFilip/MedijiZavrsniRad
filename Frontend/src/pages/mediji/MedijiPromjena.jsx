@@ -5,7 +5,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { RouteNames } from "../../constants";
 
 
-export default function MedijiDodaj() {
+export default function MedijiPromjena() {
 
     const navigate = useNavigate();
     function obradiSubmit(e){ // e je event
@@ -15,7 +15,7 @@ export default function MedijiDodaj() {
 
     return (
         <>
-            Dodavanje Smjera
+            Promjena Smjera
             <Form onSubmit={obradiSubmit}>
             
                 <Form.Group controlId="naziv">

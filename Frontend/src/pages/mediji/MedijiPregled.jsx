@@ -16,6 +16,7 @@ export default function MedijiPregled() {
             alert(odgovor.poruka)
             return
         }
+        // debugger;
         setMediji(odgovor.poruka)
 
     }
