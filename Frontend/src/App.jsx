@@ -10,6 +10,7 @@ import { RouteNames } from './constants';
 import Pocetna from './pages/Pocetna';
 import MedijiPregled from './pages/mediji/MedijiPregled';
 import MedijiDodaj from './pages/mediji/MedijiDodaj';
+import MedijiPromjena from './pages/mediji/MedijiPromjena';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 
         <Route path={RouteNames.MEDIJ_PREGLED} element={<MedijiPregled/>}/>
         <Route path={RouteNames.MEDIJ_NOVI} element={<MedijiDodaj/>}/>
+        <Route path={RouteNames.MEDIJ_PROMJENA} element={<MedijiPromjena/>}/>
 
       </Routes>
 

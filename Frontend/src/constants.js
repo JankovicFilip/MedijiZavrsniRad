@@ -6,6 +6,7 @@ export const RouteNames = {
 
     MEDIJ_PREGLED: '/mediji',
     MEDIJ_NOVI: '/mediji/dodaj',
+    MEDIJ_PROMJENA: '/mediji/:sifra',
 
     KORISNIK_PREGLED: '/korisnici',
 

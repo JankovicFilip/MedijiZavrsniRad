@@ -38,9 +38,19 @@ async function dodaj(smjer){
     })
 }
 
+async function getBySifra(sifra){
+    return await HttpService.get('/Medij/'+sifra)
+    .then((odgovor)=>{
+        return{greska: false, poruka: odgovor.data}
+    })
+    .catch((e)=>{
+        return {greska: true, poruka: "Problem kod dohvacanja medija s sifrom!"+sifra}
+    })
+}
 
 export default {
     get,
     brisanje,
-    dodaj
+    dodaj,
+    getBySifra
 }

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import MedijiService from "../../services/MedijService"
 import { Button, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 
 
 export default function MedijiPregled() {
+
+    const navigate = useNavigate();
 
     const[mediji, setMediji] = useState();
 
@@ -81,6 +83,12 @@ export default function MedijiPregled() {
                                 onClick={()=>obrisi(medij.sifra)}
                                 >
                                     Obriši
+                                </Button>
+                                
+                                <Button
+                                onClick={()=>navigate(`/mediji/${medij.sifra}`)}
+                                >
+                                    Promjeni
                                 </Button>
                             </td>
                         </tr>
