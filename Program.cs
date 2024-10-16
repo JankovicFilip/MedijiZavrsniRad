@@ -19,7 +19,7 @@ builder.Services.AddDbContext<MedijiContext>(opcije =>
 
 
 
-builder.Services.AddCors(opcije =>
+/*builder.Services.AddCors(opcije =>
 {
     opcije.AddDefaultPolicy(policy =>
     {
@@ -29,9 +29,9 @@ builder.Services.AddCors(opcije =>
 
     });
 
-});
+});*/
 
-/*builder.Services.AddCors(opcije =>
+builder.Services.AddCors(opcije =>
 {
     opcije.AddPolicy("CorsPolicy",
         builder =>
@@ -39,7 +39,7 @@ builder.Services.AddCors(opcije =>
 
         );
 });
- */
+ 
 
 
 var app = builder.Build();
@@ -66,6 +66,6 @@ app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
 
-app.UseCors();
+app.UseCors("CorsPolicy");
 
 app.Run();
