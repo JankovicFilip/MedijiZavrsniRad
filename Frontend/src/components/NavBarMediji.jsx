@@ -21,7 +21,7 @@ export default function NavBarMediji(){
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="http://hannabi333-001-site1.atempurl.com/swagger/index.html"
+          <Nav.Link href="https://hannabi333-001-site1.atempurl.com/swagger/index.html"
           target='_blank'>Swagger</Nav.Link>
           
           <NavDropdown title="Programi" id="basic-nav-dropdown">
