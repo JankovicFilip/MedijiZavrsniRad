@@ -54,17 +54,6 @@ async function promjena(sifra,medij){
         return{greska: false, poruka: 'Dodano!'}
     })
     .catch((e)=>{
-        //console.log(e)
-        return {greska: true, poruka: "Problem kod dodavanja medija!"}
-    })
-}
-
-async function getBySifra(sifra){
-    return await HttpService.get('/Medij/'+sifra)
-    .then((odgovor)=>{
-        return{greska: false, poruka: odgovor.data}
-    })
-    .catch((e)=>{
         switch (e.status) {
             case 400:
                 let poruke='';
@@ -76,6 +65,16 @@ async function getBySifra(sifra){
             default:
                 return {greska: true, poruka: 'Medij se ne može promijeniti!'}
         }
+    })
+}
+
+async function getBySifra(sifra){
+    return await HttpService.get('/Medij/'+sifra)
+    .then((odgovor)=>{
+        return{greska: false, poruka: odgovor.data}
+    })
+    .catch((e)=>{
+        return {greska: true, poruka: "Problem kod dohvacanja medija s sifrom!"+sifra}
     })
 }
 
