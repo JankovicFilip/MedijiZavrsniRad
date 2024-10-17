@@ -10,7 +10,7 @@ async function get(){
     })
     .catch((e)=>{
         //console.log(e)
-        return {greska: true, poruka: "Problem kod dohvacanja medija!"}
+        return {greska: true, poruka:'Problem kod dohvacanja medija!'}
     })
 }
 
@@ -74,7 +74,7 @@ async function getBySifra(sifra){
         return{greska: false, poruka: odgovor.data}
     })
     .catch((e)=>{
-        return {greska: true, poruka: "Problem kod dohvacanja medija s sifrom!"+sifra}
+        return {greska: true, poruka: 'Problem kod dohvacanja medija s sifrom '+sifra}
     })
 }
 
