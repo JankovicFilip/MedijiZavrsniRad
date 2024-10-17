@@ -29,14 +29,7 @@ namespace MedijiZavrsniRad.Controllers
             {
                 return BadRequest(new { poruka = ex.Message });
             }
-            try
-            {
-                return Ok(_mapper.Map<List<MedijDTORead>>(_context.Mediji));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { poruka = ex.Message });
-            }
+            
         }
         [HttpGet]
         [Route("{sifra:int}")]
@@ -58,39 +51,70 @@ namespace MedijiZavrsniRad.Controllers
             }
             if (e == null)
             {
-                return NotFound(new { poruka = "Smjer ne postoji u bazi" });
+                return NotFound(new { poruka = "Medij ne postoji u bazi" });
             }
 
             return Ok(_mapper.Map<MedijDTORead>(e));
         }
 
         [HttpPost]
-        public IActionResult Post(Medij medij)
+        public IActionResult Post(MedijDTOInsertUpdate dto)
         {
-            _context.Mediji.Add(medij);
-            _context.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created, medij);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                var e = _mapper.Map<Medij>(dto);
+                _context.Mediji.Add(e);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, _mapper.Map<MedijDTORead>(e));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
 
         }
 
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
-        public IActionResult Put(int sifra, Medij medij)
+        public IActionResult Put(int sifra, MedijDTOInsertUpdate dto)
         {
 
-            var smjerBaza = _context.Mediji.Find(sifra);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                Medij? e;
+                try
+                {
+                    e = _context.Mediji.Find(sifra);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound(new { poruka = "Medij ne postoji u bazi" });
+                }
 
-            // za sada rucno, kasnije mapper
-            smjerBaza.Naziv = medij.Naziv;
-            smjerBaza.Opis = medij.Opis;
-            smjerBaza.Vrsta = medij.Vrsta;
-            smjerBaza.Genre = medij.Genre;
+                e = _mapper.Map(dto, e);
 
-            _context.Mediji.Update(smjerBaza);
-            _context.SaveChanges();
+                _context.Mediji.Update(e);
+                _context.SaveChanges();
 
-            return Ok(new { poruka = "Uspjesno promijenjeno" });
+                return Ok(new { poruka = "Uspješno promjenjeno" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
 
 
         }
@@ -100,13 +124,33 @@ namespace MedijiZavrsniRad.Controllers
         public IActionResult Delete(int sifra)
         {
 
-            var smjerBaza = _context.Mediji.Find(sifra);
-
-
-            _context.Mediji.Remove(smjerBaza);
-            _context.SaveChanges();
-
-            return Ok(new { poruka = "Uspjesno obrisano" });
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                Medij? e;
+                try
+                {
+                    e = _context.Mediji.Find(sifra);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound("Medij ne postoji u bazi");
+                }
+                _context.Mediji.Remove(e);
+                _context.SaveChanges();
+                return Ok(new { poruka = "Uspješno obrisano" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
 
 
         }
