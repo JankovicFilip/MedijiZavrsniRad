@@ -1,4 +1,5 @@
 using MedijiZavrsniRad.Data;
+using MedijiZavrsniRad.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,6 +40,9 @@ builder.Services.AddCors(opcije =>
 
         );
 });
+
+
+builder.Services.AddAutoMapper(typeof(MedijiMappingProfile));
  
 
 

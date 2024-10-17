@@ -1,5 +1,7 @@
-﻿using MedijiZavrsniRad.Data;
+﻿using AutoMapper;
+using MedijiZavrsniRad.Data;
 using MedijiZavrsniRad.Models;
+using MedijiZavrsniRad.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,25 +10,58 @@ namespace MedijiZavrsniRad.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class MedijController : ControllerBase
+    public class MedijController(MedijiContext context, IMapper mapper) : MedijiZavrsniRadController(context, mapper)
     {
-        private readonly MedijiContext _context;
 
-        public MedijController(MedijiContext context)
-        {
-            _context = context;
-        }
+        
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<List<MedijDTORead>> Get()
         {
-            return Ok(_context.Mediji);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                return Ok(_mapper.Map<List<MedijDTORead>>(_context.Mediji));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
+            try
+            {
+                return Ok(_mapper.Map<List<MedijDTORead>>(_context.Mediji));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
         }
         [HttpGet]
         [Route("{sifra:int}")]
 
-        public IActionResult GetBySifra(int sifra)
+        public ActionResult<MedijDTORead> GetBySifra(int sifra)
         {
-            return Ok(_context.Mediji.Find(sifra));
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            Medij? e;
+            try
+            {
+                e = _context.Mediji.Find(sifra);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
+            if (e == null)
+            {
+                return NotFound(new { poruka = "Smjer ne postoji u bazi" });
+            }
+
+            return Ok(_mapper.Map<MedijDTORead>(e));
         }
 
         [HttpPost]
