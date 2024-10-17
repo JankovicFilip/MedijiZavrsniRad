@@ -55,7 +55,7 @@ export default function MedijiPromjena() {
 
     return (
         <>
-            Promjena Smjera
+            Promjena medija
             <Form onSubmit={obradiSubmit}>
             
                 <Form.Group controlId="naziv">

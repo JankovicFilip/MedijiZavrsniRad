@@ -11,6 +11,9 @@ import Pocetna from './pages/Pocetna';
 import MedijiPregled from './pages/mediji/MedijiPregled';
 import MedijiDodaj from './pages/mediji/MedijiDodaj';
 import MedijiPromjena from './pages/mediji/MedijiPromjena';
+import KorisniciPregled from './pages/korisnici/KorisniciPregled';
+import KorisniciDodaj from './pages/korisnici/KorisniciDodaj';
+import KorisniciPromjena from './pages/korisnici/KorisniciPromjena';
 
 function App() {
 
@@ -24,6 +27,11 @@ function App() {
         <Route path={RouteNames.MEDIJ_PREGLED} element={<MedijiPregled/>}/>
         <Route path={RouteNames.MEDIJ_NOVI} element={<MedijiDodaj/>}/>
         <Route path={RouteNames.MEDIJ_PROMJENA} element={<MedijiPromjena/>}/>
+        <Route path={RouteNames.KORISNIK_PREGLED} element={<KorisniciPregled/>}/>
+        <Route path={RouteNames.KORISNIK_NOVI} element={<KorisniciDodaj/>}/>
+        <Route path={RouteNames.KORISNIK_PROMJENA} element={<KorisniciPromjena/>}/>
+
+
 
       </Routes>
 

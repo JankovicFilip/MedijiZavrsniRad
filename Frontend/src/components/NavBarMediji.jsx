@@ -28,9 +28,10 @@ export default function NavBarMediji(){
             <NavDropdown.Item 
             onClick={()=>navigate(RouteNames.MEDIJ_PREGLED)}
             >Mediji</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Korisnici
-            </NavDropdown.Item>
+
+            <NavDropdown.Item 
+            onClick={()=>navigate(RouteNames.KORISNIK_PREGLED)}
+             >Korisnici</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Komentari</NavDropdown.Item>
             
           </NavDropdown>

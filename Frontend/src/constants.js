@@ -9,6 +9,8 @@ export const RouteNames = {
     MEDIJ_PROMJENA: '/mediji/:sifra',
 
     KORISNIK_PREGLED: '/korisnici',
+    KORISNIK_NOVI: '/korisnici/dodaj',
+    KORISNIK_PROMJENA: '/korisnici/:sifra',
 
     KOMENTAR_PREGLED: '/komentari'
 }
