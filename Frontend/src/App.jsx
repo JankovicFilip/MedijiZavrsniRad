@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './App.css'
-import NavBarMediji from './components/navBarMediji';
+import NavBarMediji from './components/NavBarMediji';
 import { Route, Routes } from 'react-router-dom';
 import { RouteNames } from './constants';
 import Pocetna from './pages/Pocetna';
@@ -14,6 +14,7 @@ import MedijiPromjena from './pages/mediji/MedijiPromjena';
 import KorisniciPregled from './pages/korisnici/KorisniciPregled';
 import KorisniciDodaj from './pages/korisnici/KorisniciDodaj';
 import KorisniciPromjena from './pages/korisnici/KorisniciPromjena';
+import KomentariPregled from './pages/komentari/KomentariPregled';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path={RouteNames.KORISNIK_PREGLED} element={<KorisniciPregled/>}/>
         <Route path={RouteNames.KORISNIK_NOVI} element={<KorisniciDodaj/>}/>
         <Route path={RouteNames.KORISNIK_PROMJENA} element={<KorisniciPromjena/>}/>
+        <Route path={RouteNames.KOMENTAR_PREGLED} element={<KomentariPregled/>}/>
 
 
 

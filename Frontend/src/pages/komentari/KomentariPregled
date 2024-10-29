@@ -1,0 +1,50 @@
+import { useEffect, useState } from "react";
+import KomentariService from "../../services/KomentarService";
+import { Button, Table } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { RouteNames } from "../../constants";
+
+
+
+
+export default function KomentariPregled(){
+    const[komentari,setKomentari] = useState();
+
+    const navigate = useNavigate(); 
+    
+    async function dohvatiKomentare(){
+        const odgovor = await KomentariService.get();
+
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return
+        }
+        // debugger;
+        setKomentari(odgovor.poruka)
+
+    }
+
+    useEffect(()=>{
+        dohvatiKomentare();
+    },[])
+
+    function obrisi(sifra){
+        if(!confirm('Sigurno obrisati?')){
+            return
+        }
+        brisanjeKomentara(sifra);
+    }
+
+    async function brisanjeKomentara(sifra){
+        
+        const odgovor = await KomentariService.brisanje(sifra);
+
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return
+        }
+
+        dohvatiKomentare();
+    }
+
+}
