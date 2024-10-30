@@ -28,6 +28,16 @@ export default function KomentariPregled() {
             });
     }
 
+    async function obrisiKomentar(sifra) {
+        const odgovor = await Service.obrisi(sifra);
+        if(odgovor.greska){
+            alert(odgovor.poruka);
+            return;
+        }
+        dohvatiKomentare();
+        
+    }
+
     useEffect(() => {
         dohvatiKomentare();
     }, []);

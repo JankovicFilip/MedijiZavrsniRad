@@ -12,7 +12,8 @@ export const RouteNames = {
     KORISNIK_NOVI: '/korisnici/dodaj',
     KORISNIK_PROMJENA: '/korisnici/:sifra',
 
-    KOMENTAR_PREGLED: '/komentari'
+    KOMENTAR_PREGLED: '/komentari',
+    KOMENTAR_NOVI: '/komentari/dodaj'
 }
 
 export const BACKEND_URL = 'https://hannabi333-001-site1.atempurl.com/api/v1'
