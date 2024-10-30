@@ -16,6 +16,7 @@ import KorisniciDodaj from './pages/korisnici/KorisniciDodaj';
 import KorisniciPromjena from './pages/korisnici/KorisniciPromjena';
 import KomentariPregled from './pages/komentari/KomentariPregled';
 import KomentariDodaj from './pages/komentari/KomentariDodaj';
+import KomentariPromjena from './pages/komentari/KomentariPromjena';
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
         <Route path={RouteNames.KORISNIK_PROMJENA} element={<KorisniciPromjena/>}/>
         <Route path={RouteNames.KOMENTAR_PREGLED} element={<KomentariPregled/>}/>
         <Route path={RouteNames.KOMENTAR_NOVI} element={<KomentariDodaj/>}/>
+        <Route path={RouteNames.KOMENTAR_PROMJENA} element={<KomentariPromjena/>}/>
+
 
         
 
